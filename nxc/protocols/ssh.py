@@ -132,7 +132,7 @@ class ssh(connection):
             else:
                 self.logger.fail(f"{username}:{process_secret(password)}")
         except IncompatiblePeer as e:
-            self.logger.error(f"Incompatible SSH peer for {username}:{process_secret(password)}, {e}")
+            self.logger.fail(f"{username}:{process_secret(password)} Incompatible SSH peer: {e}")
         except SSHException as e:
             if "Invalid key" in str(e):
                 self.logger.fail(f"{username}:{process_secret(password)} Could not decrypt private key, invalid password")
